@@ -99,3 +99,39 @@ const showSearchResult = async (searchText) => {
         document.getElementById('search-field').value = '';
     }, 2000);
 }
+// latest news show
+const latestNews = async () => {
+    toggleShowSpinner2(true);
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+    const data = await res.json();
+    const latestNews = document.getElementById('latest-news');
+    data.forEach((item) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'card w-full bg-base-100 p-6 border';
+        itemDiv.innerHTML = `
+        
+        <figure><img src="${item.cover_image}"
+                alt="Shoes" /></figure>
+        <div class="mt-4 space-y-3">
+            <div class="flex gap-2">
+                <img src="./images/calander.png" alt="">
+                <p>${item.author?.posted_date || "No Publish Date"}</p>
+            </div>
+            <h2 class="card-title font-bold">${item.title}</h2>
+            <p>${item.description}</p>
+            <div class="flex items-center gap-3">
+                <img class="w-11 h-11 rounded-full" src="${item.profile_image}" alt="">
+                <div>
+                    <h4 class="text-xl font-semibold">${item.author.name}</h4>
+                    <p>${item.author?.designation || "Unknown"}</p>
+                </div>
+            </div>
+        </div>
+    
+        `;
+        latestNews.appendChild(itemDiv);
+    });
+    setTimeout(() => {
+        toggleShowSpinner2(false);
+    }, 2000)
+};
