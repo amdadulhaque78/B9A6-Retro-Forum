@@ -53,3 +53,28 @@ const displayShowData = (data) => {
         cardContainer.appendChild(newDiv);
     });
 };
+// out Side Data load and count value add
+const outSideData = (title, view) => {
+    
+    const outSideContainer = document.getElementById('out-side-container');
+    const outSideDiv = document.createElement('div');
+
+    const countValue = document.getElementById('count-value');
+
+    outSideDiv.className = 'flex bg-white rounded-lg p-4';
+    outSideDiv.innerHTML = `
+    <p class="w-[200px] text-black font-bold">${title}</p>
+    <div class="flex items-center justify-center">
+        <img src="./images/eye.png" alt="">
+        <p>${view}</p>
+    </div>
+    `;
+    outSideContainer.appendChild(outSideDiv);
+
+    const incrementCount = () => {
+        let countTextNumber = parseInt(countValue.innerText);
+        countTextNumber += 1;
+        countValue.innerText = countTextNumber;
+    }
+    incrementCount()
+};
