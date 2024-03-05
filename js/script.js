@@ -78,3 +78,24 @@ const outSideData = (title, view) => {
     }
     incrementCount()
 };
+
+// search field
+const searchButton = () => {
+    toggleShowSpinner(true);
+    const searchField = document.getElementById('search-field').value;
+    showSearchResult(searchField);
+}
+
+// search result
+const showSearchResult = async (searchText) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`);
+    const data = await res.json();
+
+    const fullSearchResult = data.posts;
+
+    displayShowData(fullSearchResult);
+    setTimeout(() => {
+        toggleShowSpinner(false);
+        document.getElementById('search-field').value = '';
+    }, 2000);
+}
