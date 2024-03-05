@@ -1,4 +1,4 @@
-const lodeData = async () => {
+const loadData = async () => {
     toggleShowSpinner(true);
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
     const data = await res.json();
@@ -32,20 +32,20 @@ const displayShowData = (data) => {
             <div class="flex-1 space-y-2 lg:flex justify-between">
                 <div class="flex-1 lg:flex lg:gap-6">
                     <div class="flex items-center justify-center gap-2">
-                        <img src="./images/comment.png" alt="">
+                        <img src="images/comment.png" alt="">
                         <p>${post.comment_count}</p>
                     </div>
                     <div class="flex items-center justify-center gap-2">
-                        <img src="./images/eye.png" alt="">
+                        <img src="images/eye.png" alt="">
                         <p> ${post.view_count}</p>
                     </div>
                     <div class="flex items-center justify-center gap-2">
-                        <img src="./images/clock.png" alt="">
+                        <img src="images/clock.png" alt="">
                         <p>${post.posted_time} min</p>
                     </div>
 
                 </div>
-                <button onclick="outSideData('${post.title.replace(/'/g,'@')}' , '${post.view_count}',)"><img src="./images/email.png" alt=""></button>
+                <button onclick="outSideData('${post.title.replace(/'/g,'@')}' , '${post.view_count}',)"><img src="images/email.png" alt=""></button>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@ const displayShowData = (data) => {
         cardContainer.appendChild(newDiv);
     });
 };
-// out Side Data load and count value add
+// Data load and count value add
 const outSideData = (title, view) => {
     
     const outSideContainer = document.getElementById('out-side-container');
@@ -65,7 +65,7 @@ const outSideData = (title, view) => {
     outSideDiv.innerHTML = `
     <p class="w-[200px] text-black font-bold">${title}</p>
     <div class="flex items-center justify-center">
-        <img src="./images/eye.png" alt="">
+        <img src="images/eye.png" alt="">
         <p>${view}</p>
     </div>
     `;
@@ -114,7 +114,7 @@ const latestNews = async () => {
                 alt="Shoes" /></figure>
         <div class="mt-4 space-y-3">
             <div class="flex gap-2">
-                <img src="./images/calander.png" alt="">
+                <img src="images/calendar.png" alt="">
                 <p>${item.author?.posted_date || "No Publish Date"}</p>
             </div>
             <h2 class="card-title font-bold">${item.title}</h2>
@@ -154,5 +154,5 @@ const toggleShowSpinner2 = (isLoading) => {
     }
 };
 
-lodeData();
+loadData();
 latestNews();
