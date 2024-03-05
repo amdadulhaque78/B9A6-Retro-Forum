@@ -135,3 +135,24 @@ const latestNews = async () => {
         toggleShowSpinner2(false);
     }, 2000)
 };
+
+// spinner show function
+const toggleShowSpinner = (isLoading) => {
+    const spinner = document.getElementById('show-spinner');
+    if (isLoading) {
+        spinner.classList.remove('hidden');
+    } else {
+        spinner.classList.add('hidden');
+    }
+};
+const toggleShowSpinner2 = (isLoading) => {
+    const spinner = document.getElementById('show-spinner2');
+    if (isLoading) {
+        spinner.classList.remove('hidden');
+    } else {
+        spinner.classList.add('hidden');
+    }
+};
+
+lodeData();
+latestNews();
